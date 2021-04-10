@@ -1,5 +1,5 @@
 <?php
-require_once './../../queries.php';
+require_once './../queries.php';
 $config=include 'config.php';
 $dsn=$config['dsn'];
 $user=$config['user']??'sio2a';

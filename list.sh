@@ -5,5 +5,5 @@ selectPk
 selectNoPk
 join
 update
-myIsam/selectPk
+selectPk-inno-big
 "

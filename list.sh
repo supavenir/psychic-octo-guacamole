@@ -5,4 +5,5 @@ selectPk
 selectNoPk
 join
 update
+myIsam/selectPk
 "

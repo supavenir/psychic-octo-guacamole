@@ -2,8 +2,8 @@
 require_once './../queries.php';
 $config=include 'config.php';
 $dsn=$config['dsn'];
-$user=$config['user'];
-$password=$config['password'];
+$user=$config['user']??'sio2a';
+$password=$config['password']??'sio2a';
 $op=OPS[$config['op']];
 $count=$config['count']??null;
 if(\function_exists($op)) {

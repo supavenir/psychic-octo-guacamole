@@ -1,6 +1,6 @@
 #!/bin/sh
 
-base="https://orm-benchmarks.kobject.net/fw"
+base="https://db-benchmarks.sts-sio-caen.info/fw"
 
 cd `dirname $0`
 

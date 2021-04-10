@@ -10,4 +10,4 @@ if(\function_exists($op)) {
 	$op(connect($dsn, $user, $password), $count);
 }
 
-require $_SERVER['DOCUMENT_ROOT'].'/php-orm-benchmark/libs/output_data.php';
+require $_SERVER['DOCUMENT_ROOT'].'/libs/output_data.php';

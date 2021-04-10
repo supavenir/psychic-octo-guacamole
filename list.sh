@@ -3,4 +3,6 @@
 list="
 selectPk
 selectNoPk
+join
+update
 "

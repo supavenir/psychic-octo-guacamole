@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Poiret+One');
 body {
-    background: #333;
+    background: #393232;
 }
 
 .inner {
-    background: #fff;
+    background: #f2edd7;
     flex: 1 0 auto;
     margin: 0 auto;
     max-width: 1500px;
@@ -13,7 +13,7 @@ body {
     padding-bottom: 15px;
 }
 .top_menu{
-	background: #14485f;
+	background: #3a6351;
 	padding: 4px;
 }
 

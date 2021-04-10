@@ -1,2 +1,23 @@
-{"require":{"twig\/twig":"~1.0","mindplay\/annotations":"dev-master","phpmv\/ubiquity":"2.0.x-dev","phpmv\/php-mv-ui":"dev-master",
-        "erusev/parsedown": "^1.7"},"autoload":{"psr-4":{"":"app\/"}},"require-dev":{"czproject\/git-php":"^3.13"}}
+{
+        "require": {
+                "php": ">=8.0",
+                "twig\/twig": "^3.0",
+                "phpmv/ubiquity": "dev-master",
+                "phpmv/php-mv-ui": "dev-master",
+                "twig/intl-extra": "^3.3",
+                "erusev/parsedown": "^1.7"
+        },
+        "require-dev": {
+                "monolog\/monolog": "^2.2",
+                "phpmv\/ubiquity-dev": "^0.1",
+                "phpmv\/ubiquity-webtools": "^2.3",
+                "czproject\/git-php": "^3.13",
+                "phpmv\/ubiquity-attributes": "dev-main"
+        },
+        "autoload": {
+                "psr-4": {
+                        "": "app\/"
+                }
+        }
+}
+

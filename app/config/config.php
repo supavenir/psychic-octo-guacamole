@@ -1,6 +1,6 @@
 <?php
 return array(
-		"siteUrl"=>"http://127.0.0.1/php-db-benchmark/",
+		"siteUrl"=>"https://db-benchmarks.sts-sio-caen.info",
 		"database"=>[
 				"type"=>"mysql",
 				"dbName"=>"",

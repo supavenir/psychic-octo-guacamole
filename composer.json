@@ -1,0 +1,2 @@
+{"require":{"twig\/twig":"~1.0","mindplay\/annotations":"dev-master","phpmv\/ubiquity":"2.0.x-dev","phpmv\/php-mv-ui":"dev-master",
+        "erusev/parsedown": "^1.7"},"autoload":{"psr-4":{"":"app\/"}},"require-dev":{"czproject\/git-php":"^3.13"}}

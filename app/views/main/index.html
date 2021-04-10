@@ -1,0 +1,36 @@
+<div class="inner">
+	<div class="top_menu">
+		<div class="ui container">
+			<div class="ui inverted secondary  menu">
+				<a class="active item" href="Main" data-target="body">Home</a>
+				<a class="item" href="#configuration">Configuration</a>
+				<a class="item" href="#urls">Try it!</a>
+				<a class="item" href="Main/datas" data-target="#main-content">The datas</a>
+				<a class="item" href="Main/doIt" data-target="#main-content">Do it!</a>
+			</div>
+		</div>
+	</div>
+	<div class="ui top_header tertiary red inverted segment">
+		<div class="ui container">
+			<h1 class="ui inverted header">
+			  <div class="poiret content">
+			    ORM benchmarks
+			    <div class="sub header">Object Relational Mapper performances</div>
+			  </div>
+			</h1>
+		</div>
+	</div>
+	<div class="ui container" id="main-content">
+		<div id="div-fields" style="display:none;">{{ q["frm-fields"] | raw }}</div>
+		<div id="div-fields-response"></div>
+		{{ q["tabs"] | raw }}
+		<h2 class="ui header" id="configuration"><i class="ui server icon"></i>Configuration for tests</h2>
+		{{ q["server-config"] | raw }}
+		<h2 class="ui header" id="urls"><i class="ui linkify icon"></i>Try it!</h2>
+		{{ urls | raw }}
+	</div>
+</div>
+<footer>
+</footer>
+
+{{ script_foot | raw }}

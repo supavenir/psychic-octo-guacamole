@@ -1,4 +1,5 @@
 <?php
+/*
 $dsn = 'mysql:dbname=myisam-small;host=127.0.0.1';
 $user = 'sio2a';
 $password = 'sio2a';
@@ -19,3 +20,5 @@ try {
 } catch (PDOException $e) {
 	echo $e->getMessage();
 }
+*/
+	echo '0:0';

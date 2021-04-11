@@ -3,7 +3,9 @@ const OP_SELECT_PK='selectPkQuery';
 const OP_SELECT_NO_PK='selectNoPKQuery';
 const OP_JOIN='joinQuery';
 const OP_UPDATE='updateQuery';
-const OPS=[OP_SELECT_PK,OP_SELECT_NO_PK,OP_JOIN,OP_UPDATE];
+const OP_LIKE='updateQuery';
+const OP_COUNT='updateQuery';
+const OPS=[OP_SELECT_PK,OP_SELECT_NO_PK,OP_JOIN,OP_UPDATE,OP_LIKE,OP_COUNT];
 
 function connect($dsn,$user,$password){
 	try {
@@ -42,4 +44,13 @@ function joinQuery(\PDO $db){
 function updateQuery(\PDO $db,int $max){
 	$id=\mt_rand(1, $max);
 	return executeQuery($db,"update user_ set lastname='aaa' where id='$id'");
+}
+
+function likeQuery(\PDO $db){
+	return query($db,'select * from user_ where firstname like "%Winter%"');
+}
+
+function countQuery(\PDO $db){
+	return query($db,'select count(*) from user_');
+
 }

@@ -25,19 +25,19 @@ USE `myisam-small`;
 -- --------------------------------------------------------
 
 --
--- Structure de la table `category`
+-- Structure de la table `category_`
 --
 
-CREATE TABLE `category` (
+CREATE TABLE `category_` (
   `id` mediumint(8) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8_bin DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
--- Contenu de la table `category`
+-- Contenu de la table `category_`
 --
 
-INSERT INTO `category` (`id`, `name`) VALUES
+INSERT INTO `category_` (`id`, `name`) VALUES
 (1, 'Proin Mi Aliquam Associates'),
 (2, 'Pellentesque A Facilisis Ltd'),
 (3, 'Per Corp.'),
@@ -52,10 +52,10 @@ INSERT INTO `category` (`id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `user`
+-- Structure de la table `user_`
 --
 
-CREATE TABLE `user` (
+CREATE TABLE `user_` (
   `id` mediumint(8) UNSIGNED NOT NULL,
   `firstname` varchar(255) COLLATE utf8_bin DEFAULT NULL,
   `lastname` varchar(255) COLLATE utf8_bin DEFAULT NULL,
@@ -66,10 +66,10 @@ CREATE TABLE `user` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
--- Contenu de la table `user`
+-- Contenu de la table `user_`
 --
 
-INSERT INTO `user` (`id`, `firstname`, `lastname`, `age`, `sexe`, `city`, `idCategory`) VALUES
+INSERT INTO `user_` (`id`, `firstname`, `lastname`, `age`, `sexe`, `city`, `idCategory`) VALUES
 (1, 'Akeem', 'Faulkner', 6, '0', 'Sanquhar', 6),
 (2, 'Thor', 'Sweet', 34, '1', 'Castel Ritaldi', 5),
 (3, 'Bianca', 'Stuart', 95, '1', 'La Reina', 5),
@@ -120,7 +120,7 @@ INSERT INTO `user` (`id`, `firstname`, `lastname`, `age`, `sexe`, `city`, `idCat
 (48, 'Zena', 'Strickland', 62, '1', 'Baton Rouge', 6),
 (49, 'Hiram', 'Gould', 86, '1', 'Port Moody', 10),
 (50, 'Kato', 'Benjamin', 42, '0', 'Woodlands County', 4),
-(51, 'Allistair', 'Witt', 10, '0', 'Melville', 8),
+(51, 'Winter', 'Witt', 10, '0', 'Melville', 8),
 (52, 'Kadeem', 'Todd', 91, '1', 'Mexicali', 4),
 (53, 'Kessie', 'Vance', 69, '1', 'Acosse', 4),
 (54, 'Ishmael', 'Myers', 2, '1', 'Deerlijk', 8),
@@ -176,15 +176,15 @@ INSERT INTO `user` (`id`, `firstname`, `lastname`, `age`, `sexe`, `city`, `idCat
 --
 
 --
--- Index pour la table `category`
+-- Index pour la table `category_`
 --
-ALTER TABLE `category`
+ALTER TABLE `category_`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `user`
+-- Index pour la table `user_`
 --
-ALTER TABLE `user`
+ALTER TABLE `user_`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -192,14 +192,14 @@ ALTER TABLE `user`
 --
 
 --
--- AUTO_INCREMENT pour la table `category`
+-- AUTO_INCREMENT pour la table `category_`
 --
-ALTER TABLE `category`
+ALTER TABLE `category_`
   MODIFY `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
--- AUTO_INCREMENT pour la table `user`
+-- AUTO_INCREMENT pour la table `user_`
 --
-ALTER TABLE `user`
+ALTER TABLE `user_`
   MODIFY `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

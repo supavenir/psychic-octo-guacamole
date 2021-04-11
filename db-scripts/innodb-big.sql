@@ -26,19 +26,19 @@ USE `innodb-big`;
 -- --------------------------------------------------------
 
 --
--- Structure de la table `category`
+-- Structure de la table `category_`
 --
 
-CREATE TABLE `category` (
+CREATE TABLE `category_` (
   `id` mediumint(8) UNSIGNED NOT NULL,
   `name` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Déchargement des données de la table `category`
+-- Déchargement des données de la table `category_`
 --
 
-INSERT INTO `category` (`id`, `name`) VALUES
+INSERT INTO `category_` (`id`, `name`) VALUES
 (1, 'Proin Mi Aliquam Associates'),
 (2, 'Pellentesque A Facilisis Ltd'),
 (3, 'Per Corp.'),
@@ -143,10 +143,10 @@ INSERT INTO `category` (`id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `user`
+-- Structure de la table `user_`
 --
 
-CREATE TABLE `user` (
+CREATE TABLE `user_` (
   `id` mediumint(8) UNSIGNED NOT NULL,
   `firstname` varchar(255) DEFAULT NULL,
   `lastname` varchar(255) DEFAULT NULL,
@@ -157,10 +157,10 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Déchargement des données de la table `user`
+-- Déchargement des données de la table `user_`
 --
 
-INSERT INTO `user` (`id`, `firstname`, `lastname`, `age`, `sexe`, `city`, `idCategory`) VALUES
+INSERT INTO `user_` (`id`, `firstname`, `lastname`, `age`, `sexe`, `city`, `idCategory`) VALUES
 (1, 'Akeem', 'Faulkner', 6, '0', 'Sanquhar', 6),
 (2, 'Thor', 'Sweet', 34, '1', 'Castel Ritaldi', 5),
 (3, 'Bianca', 'Stuart', 95, '1', 'La Reina', 5),
@@ -311,7 +311,7 @@ INSERT INTO `user` (`id`, `firstname`, `lastname`, `age`, `sexe`, `city`, `idCat
 (148, 'Zena', 'Strickland', 62, '1', 'Baton Rouge', 6),
 (149, 'Hiram', 'Gould', 86, '1', 'Port Moody', 10),
 (150, 'Kato', 'Benjamin', 42, '0', 'Woodlands County', 4),
-(151, 'Allistair', 'Witt', 10, '0', 'Melville', 8),
+(151, 'Winter', 'Witt', 10, '0', 'Melville', 8),
 (152, 'Kadeem', 'Todd', 91, '1', 'Mexicali', 4),
 (153, 'Kessie', 'Vance', 69, '1', 'Acosse', 4),
 (154, 'Ishmael', 'Myers', 2, '1', 'Deerlijk', 8),
@@ -1145,7 +1145,7 @@ INSERT INTO `user` (`id`, `firstname`, `lastname`, `age`, `sexe`, `city`, `idCat
 (982, 'Charity', 'Ochoa', 54, '0', 'Hudiksvall', 6),
 (983, 'Azalia', 'Wilcox', 67, '0', 'Portland', 7),
 (984, 'Rhiannon', 'Barrera', 4, '1', 'Radicofani', 10);
-INSERT INTO `user` (`id`, `firstname`, `lastname`, `age`, `sexe`, `city`, `idCategory`) VALUES
+INSERT INTO `user_` (`id`, `firstname`, `lastname`, `age`, `sexe`, `city`, `idCategory`) VALUES
 (985, 'Chandler', 'Salazar', 89, '0', 'Couthuin', 9),
 (986, 'Inez', 'Cooke', 89, '1', 'Beypazar─▒', 4),
 (987, 'Ryan', 'Sears', 97, '1', 'Campitello di Fassa', 2),
@@ -1168,15 +1168,15 @@ INSERT INTO `user` (`id`, `firstname`, `lastname`, `age`, `sexe`, `city`, `idCat
 --
 
 --
--- Index pour la table `category`
+-- Index pour la table `category_`
 --
-ALTER TABLE `category`
+ALTER TABLE `category_`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `user`
+-- Index pour la table `user_`
 --
-ALTER TABLE `user`
+ALTER TABLE `user_`
   ADD PRIMARY KEY (`id`),
   ADD KEY `idCategory` (`idCategory`);
 
@@ -1185,15 +1185,15 @@ ALTER TABLE `user`
 --
 
 --
--- AUTO_INCREMENT pour la table `category`
+-- AUTO_INCREMENT pour la table `category_`
 --
-ALTER TABLE `category`
+ALTER TABLE `category_`
   MODIFY `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
 
 --
--- AUTO_INCREMENT pour la table `user`
+-- AUTO_INCREMENT pour la table `user_`
 --
-ALTER TABLE `user`
+ALTER TABLE `user_`
   MODIFY `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1001;
 
 --
@@ -1201,10 +1201,10 @@ ALTER TABLE `user`
 --
 
 --
--- Contraintes pour la table `user`
+-- Contraintes pour la table `user_`
 --
-ALTER TABLE `user`
-  ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`idCategory`) REFERENCES `category` (`id`);
+ALTER TABLE `user_`
+  ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`idCategory`) REFERENCES `category_` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

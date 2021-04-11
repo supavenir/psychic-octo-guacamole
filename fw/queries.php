@@ -9,9 +9,8 @@ const OPS=[OP_SELECT_PK,OP_SELECT_NO_PK,OP_JOIN,OP_UPDATE,OP_LIKE,OP_COUNT];
 
 function connect($dsn,$user,$password){
 	try {
-		$db = new \PDO('pgsql:host=127.0.0.1;dbname=innodb-large', $user, $password,
+		$db = new \PDO('pgsql:host=127.0.0.1;dbname=pgsqllarge', $user, $password,
 		[
-			\PDO::ATTR_ERRMODE=> \PDO::ERRMODE_EXCEPTION,
 			\PDO::ATTR_PERSISTENT => true,
 			\PDO::ATTR_EMULATE_PREPARES => false
 		]);

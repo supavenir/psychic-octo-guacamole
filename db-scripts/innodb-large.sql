@@ -34,6 +34,67 @@ CREATE TABLE `category_` (
   `name` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `user_`
+--
+
+CREATE TABLE `user_` (
+                         `id` mediumint(8) UNSIGNED NOT NULL,
+                         `firstname` varchar(255) DEFAULT NULL,
+                         `lastname` varchar(255) DEFAULT NULL,
+                         `age` mediumint(9) DEFAULT NULL,
+                         `sexe` varchar(255) DEFAULT NULL,
+                         `city` varchar(255) DEFAULT NULL,
+                         `idCategory` mediumint(8) UNSIGNED DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+--
+-- Index pour les tables déchargées
+--
+
+--
+-- Index pour la table `category_`
+--
+ALTER TABLE `category_`
+    ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `user_`
+--
+ALTER TABLE `user_`
+    ADD PRIMARY KEY (`id`),
+  ADD KEY `idCategory` (`idCategory`);
+
+--
+-- AUTO_INCREMENT pour les tables déchargées
+--
+
+--
+-- AUTO_INCREMENT pour la table `category_`
+--
+ALTER TABLE `category_`
+    MODIFY `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
+
+--
+-- AUTO_INCREMENT pour la table `user_`
+--
+ALTER TABLE `user_`
+    MODIFY `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1001;
+
+--
+-- Contraintes pour les tables déchargées
+--
+
+--
+-- Contraintes pour la table `user_`
+--
+ALTER TABLE `user_`
+    ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`idCategory`) REFERENCES `category_` (`id`);
+
+
 --
 -- Déchargement des données de la table `category_`
 --
@@ -148,21 +209,6 @@ INSERT INTO `category_` (`name`) VALUES ("Sapien Cras Dolor Ltd"),("Dui Limited"
 INSERT INTO `category_` (`name`) VALUES ("Tincidunt Limited"),("Sem Ut Dolor Institute"),("Ridiculus Mus Proin Incorporated"),("Mollis LLC"),("Quis Company"),("Semper Erat Corp."),("Odio Consulting"),("Urna Nec Luctus LLC"),("Viverra LLC"),("Lobortis Quis Pede Corp.");
 INSERT INTO `category_` (`name`) VALUES ("Eleifend Egestas Sed Ltd"),("Magna Phasellus Industries"),("Proin Velit Inc."),("Eget Foundation"),("Eget Lacus LLC"),("Feugiat Lorem Foundation"),("Dictum Mi Ac PC"),("Ante Dictum Consulting"),("Nisl Sem Company"),("Non Corp.");
 
--- --------------------------------------------------------
-
---
--- Structure de la table `user_`
---
-
-CREATE TABLE `user_` (
-  `id` mediumint(8) UNSIGNED NOT NULL,
-  `firstname` varchar(255) DEFAULT NULL,
-  `lastname` varchar(255) DEFAULT NULL,
-  `age` mediumint(9) DEFAULT NULL,
-  `sexe` varchar(255) DEFAULT NULL,
-  `city` varchar(255) DEFAULT NULL,
-  `idCategory` mediumint(8) UNSIGNED DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `user_`
@@ -1179,48 +1225,7 @@ INSERT INTO `user_` (firstname,lastname,age,sexe,city,idCategory) VALUES ("Riley
 INSERT INTO `user_` (firstname,lastname,age,sexe,city,idCategory) VALUES ("Jemima","Pope",55,"0","Gubkin",4),("Iliana","Kemp",13,"1","Kearney",10),("TaShya","Chang",21,"1","Gujrat",6),("Orson","Lopez",37,"1","El Carmen",1),("Lucian","Morales",12,"0","Gold Coast",10),("Lillith","Peterson",45,"1","Minna",2),("Mohammad","Rollins",62,"1","Kungälv",10),("Mikayla","Logan",20,"0","Berhampore",1),("Tanek","Reynolds",4,"0","Sommariva Perno",10),("Fay","Mcmillan",83,"0","Windermere",7);
 
 
---
--- Index pour les tables déchargées
---
 
---
--- Index pour la table `category_`
---
-ALTER TABLE `category_`
-  ADD PRIMARY KEY (`id`);
-
---
--- Index pour la table `user_`
---
-ALTER TABLE `user_`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `idCategory` (`idCategory`);
-
---
--- AUTO_INCREMENT pour les tables déchargées
---
-
---
--- AUTO_INCREMENT pour la table `category_`
---
-ALTER TABLE `category_`
-  MODIFY `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
-
---
--- AUTO_INCREMENT pour la table `user_`
---
-ALTER TABLE `user_`
-  MODIFY `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1001;
-
---
--- Contraintes pour les tables déchargées
---
-
---
--- Contraintes pour la table `user_`
---
-ALTER TABLE `user_`
-  ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`idCategory`) REFERENCES `category_` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

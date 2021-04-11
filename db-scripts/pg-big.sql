@@ -11,21 +11,21 @@ CREATE TABLE "user_" (
   idcategory integer NULL
 );
 
-CREATE TABLE "category" (
+CREATE TABLE "category_" (
   id SERIAL PRIMARY KEY,
   name varchar(255)
 );
 
-INSERT INTO "category" (name) VALUES ('Nibh Incorporated'),('Varius Institute'),('Dictum Incorporated'),('Arcu Imperdiet LLC'),('Dictum Incorporated'),('Non Lobortis Corp.'),('Quam Ltd'),('Mattis Incorporated'),('A Consulting'),('Ipsum Dolor Sit LLP');
-INSERT INTO "category" (name) VALUES ('Sed Sapien Nunc Incorporated'),('Amet Metus Associates'),('Semper Tellus PC'),('Phasellus Consulting'),('Eu Tellus Limited'),('Fusce Dolor Inc.'),('At Sem Industries'),('Dictum LLP'),('Cras LLP'),('Nec Quam Curabitur Foundation');
-INSERT INTO "category" (name) VALUES ('Primis In Faucibus Industries'),('Sit Industries'),('Cursus Integer Incorporated'),('Gravida Incorporated'),('Quis LLP'),('Erat Inc.'),('Nulla Vulputate Dui Limited'),('Sem PC'),('Semper Auctor Mauris Industries'),('Curabitur Vel Lectus Industries');
-INSERT INTO "category" (name) VALUES ('Nunc Incorporated'),('Lacus Aliquam LLP'),('Dui Augue Eu Corporation'),('Nisi Aenean Eget PC'),('Nullam Associates'),('Dolor Dapibus Gravida PC'),('Etiam Imperdiet Dictum Industries'),('Dapibus Foundation'),('Nulla At Corp.'),('Dolor PC');
-INSERT INTO "category" (name) VALUES ('Libero Donec Consectetuer Foundation'),('Hendrerit Donec Porttitor Foundation'),('Enim Inc.'),('Orci Incorporated'),('Elit Consulting'),('Risus Nulla Corp.'),('Mauris Blandit Limited'),('Lectus Ante Company'),('Enim Nunc Ut PC'),('Id Magna Associates');
-INSERT INTO "category" (name) VALUES ('Class Aptent Limited'),('Vitae Inc.'),('Dictum Eu Placerat Inc.'),('Orci Ut Semper LLC'),('Dolor Nonummy PC'),('Nisl Elementum Purus Corp.'),('Nunc LLC'),('Vulputate Mauris Institute'),('Phasellus Associates'),('Sodales Elit Incorporated');
-INSERT INTO "category" (name) VALUES ('Augue Consulting'),('Cras Pellentesque Sed PC'),('At Associates'),('Est Company'),('Eget Odio Aliquam Corp.'),('Fringilla Porttitor LLP'),('Egestas A Dui Corporation'),('In Molestie Tortor Limited'),('Luctus Industries'),('Vitae Erat Vel Corp.');
-INSERT INTO "category" (name) VALUES ('Pellentesque Tincidunt Company'),('Parturient LLP'),('Lectus Company'),('Vitae Aliquet Nec Inc.'),('Varius Nam Porttitor Limited'),('Et Magnis Corporation'),('Eu Eleifend PC'),('Mollis Duis LLP'),('Metus Ltd'),('Rutrum Eu Incorporated');
-INSERT INTO "category" (name) VALUES ('Nec Company'),('Nibh Vulputate Mauris Industries'),('Nisi Mauris Ltd'),('Nascetur Ridiculus Mus Institute'),('Posuere Cubilia Curae; Company'),('Tristique Corporation'),('Nec Incorporated'),('Dui Inc.'),('In Industries'),('Sem Industries');
-INSERT INTO "category" (name) VALUES ('Elit Inc.'),('Aliquet Corporation'),('Eu Ultrices LLP'),('Consectetuer Euismod LLC'),('In Ornare Industries'),('Vitae Associates'),('Non Corporation'),('Quisque Nonummy LLP'),('A Felis Ullamcorper Associates'),('Amet Metus Aliquam Company');
+INSERT INTO "category_" (name) VALUES ('Nibh Incorporated'),('Varius Institute'),('Dictum Incorporated'),('Arcu Imperdiet LLC'),('Dictum Incorporated'),('Non Lobortis Corp.'),('Quam Ltd'),('Mattis Incorporated'),('A Consulting'),('Ipsum Dolor Sit LLP');
+INSERT INTO "category_" (name) VALUES ('Sed Sapien Nunc Incorporated'),('Amet Metus Associates'),('Semper Tellus PC'),('Phasellus Consulting'),('Eu Tellus Limited'),('Fusce Dolor Inc.'),('At Sem Industries'),('Dictum LLP'),('Cras LLP'),('Nec Quam Curabitur Foundation');
+INSERT INTO "category_" (name) VALUES ('Primis In Faucibus Industries'),('Sit Industries'),('Cursus Integer Incorporated'),('Gravida Incorporated'),('Quis LLP'),('Erat Inc.'),('Nulla Vulputate Dui Limited'),('Sem PC'),('Semper Auctor Mauris Industries'),('Curabitur Vel Lectus Industries');
+INSERT INTO "category_" (name) VALUES ('Nunc Incorporated'),('Lacus Aliquam LLP'),('Dui Augue Eu Corporation'),('Nisi Aenean Eget PC'),('Nullam Associates'),('Dolor Dapibus Gravida PC'),('Etiam Imperdiet Dictum Industries'),('Dapibus Foundation'),('Nulla At Corp.'),('Dolor PC');
+INSERT INTO "category_" (name) VALUES ('Libero Donec Consectetuer Foundation'),('Hendrerit Donec Porttitor Foundation'),('Enim Inc.'),('Orci Incorporated'),('Elit Consulting'),('Risus Nulla Corp.'),('Mauris Blandit Limited'),('Lectus Ante Company'),('Enim Nunc Ut PC'),('Id Magna Associates');
+INSERT INTO "category_" (name) VALUES ('Class Aptent Limited'),('Vitae Inc.'),('Dictum Eu Placerat Inc.'),('Orci Ut Semper LLC'),('Dolor Nonummy PC'),('Nisl Elementum Purus Corp.'),('Nunc LLC'),('Vulputate Mauris Institute'),('Phasellus Associates'),('Sodales Elit Incorporated');
+INSERT INTO "category_" (name) VALUES ('Augue Consulting'),('Cras Pellentesque Sed PC'),('At Associates'),('Est Company'),('Eget Odio Aliquam Corp.'),('Fringilla Porttitor LLP'),('Egestas A Dui Corporation'),('In Molestie Tortor Limited'),('Luctus Industries'),('Vitae Erat Vel Corp.');
+INSERT INTO "category_" (name) VALUES ('Pellentesque Tincidunt Company'),('Parturient LLP'),('Lectus Company'),('Vitae Aliquet Nec Inc.'),('Varius Nam Porttitor Limited'),('Et Magnis Corporation'),('Eu Eleifend PC'),('Mollis Duis LLP'),('Metus Ltd'),('Rutrum Eu Incorporated');
+INSERT INTO "category_" (name) VALUES ('Nec Company'),('Nibh Vulputate Mauris Industries'),('Nisi Mauris Ltd'),('Nascetur Ridiculus Mus Institute'),('Posuere Cubilia Curae; Company'),('Tristique Corporation'),('Nec Incorporated'),('Dui Inc.'),('In Industries'),('Sem Industries');
+INSERT INTO "category_" (name) VALUES ('Elit Inc.'),('Aliquet Corporation'),('Eu Ultrices LLP'),('Consectetuer Euismod LLC'),('In Ornare Industries'),('Vitae Associates'),('Non Corporation'),('Quisque Nonummy LLP'),('A Felis Ullamcorper Associates'),('Amet Metus Aliquam Company');
 
 
 INSERT INTO "user_" (firstname,lastname,age,sexe,city,idcategory) VALUES ('Kamal','Heath',43,'0','Pointe-du-Lac',59),('Harding','Park',62,'1','East Kilbride',43),('Marsden','Stevens',71,'0','Cartago',100),('Hiram','Newman',72,'0','Penhold',29),('Lenore','Simmons',81,'1','Dera Ghazi Khan',63),('Doris','Reid',5,'1','Aisén',76),('Harding','Johns',76,'1','Viesville',61),('Calvin','Mcbride',11,'0','Lewiston',76),('Amanda','English',67,'1','Reus',94),('Mara','Delacruz',73,'1','Batu',2);
@@ -132,6 +132,6 @@ INSERT INTO "user_" (firstname,lastname,age,sexe,city,idcategory) VALUES ('Zeph'
 ALTER TABLE "user_" 
 ADD CONSTRAINT "fk_user_cat" 
 FOREIGN KEY (idcategory) 
-REFERENCES "category" (id);
+REFERENCES "category_" (id);
 
 COMMIT;

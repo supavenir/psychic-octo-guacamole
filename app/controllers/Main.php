@@ -59,6 +59,9 @@ class Main extends ControllerBase{
 						$content.=$element["div"];
 					}
 					$title=$gui->replaceHtml($title);
+					$title=\str_replace('-small','<span class="ui mini circular label">S</span>',$title);
+					$title=\str_replace('-medium','<span class="ui mini circular label">M</span>',$title);
+					$title=\str_replace('-large','<span class="ui mini circular label">L</span>',$title);
 					$content=$gui->replaceHtml($content);
 					$tab=$tabs->addTab($title, $content);
 				}

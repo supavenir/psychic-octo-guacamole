@@ -9,6 +9,7 @@ function connect($dsn,$user,$password){
 	try {
 		$db = new \PDO('pgsql:host=127.0.0.1;dbname=pgsqlbig', $user, $password);
 		$db->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+		$db->setAttribute(\PDO::ATTR_PERSISTENT, true);
 
 	} catch (\PDOException $e) {
 		print "Error!: " . $e->getMessage() . "<br/>";
@@ -32,11 +33,11 @@ function selectPkQuery(\PDO $db,int $max){
 }
 
 function selectNoPKQuery(\PDO $db){
-	return query($db,"select * from user_ where firstname='Allistair'");
+	return query($db,"select * from user_ where firstname='Winter'");
 }
 
 function joinQuery(\PDO $db){
-	return query($db,"select category_.* from user_ inner join category_ on user_.idCategory=category_.id where firstname='Allistair'");
+	return query($db,"select category_.* from user_ inner join category_ on user_.idCategory=category_.id where firstname='Winter'");
 }
 
 function updateQuery(\PDO $db,int $max){

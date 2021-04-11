@@ -7,7 +7,7 @@ const OPS=[OP_SELECT_PK,OP_SELECT_NO_PK,OP_JOIN,OP_UPDATE];
 
 function connect($dsn,$user,$password){
 	try {
-		$db = new \PDO('mysql:host=127.0.0.1;dbname=innodb-big', $user, $password);
+		$db = new \PDO('mysql:host=127.0.0.1;dbname=myisam-big', $user, $password);
 		$db->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
 
 	} catch (\PDOException $e) {
@@ -41,5 +41,5 @@ function joinQuery(\PDO $db){
 
 function updateQuery(\PDO $db,int $max){
 	$id=\mt_rand(1, $max);
-	return executeQuery($db,"update user set firstname='aaa' where id='$id'");
+	return executeQuery($db,"update user set lastname='aaa' where id='$id'");
 }

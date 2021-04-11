@@ -2,6 +2,8 @@ CREATE DATABASE "pgsqllarge" WITH TEMPLATE = template0 ENCODING 'UTF8';
 \c pgsqllarge
 BEGIN;
 
+CREATE EXTENSION IF NOT EXISTS pg_stat_statements;
+
 CREATE TABLE "user_" (
   id SERIAL PRIMARY KEY,
   firstname varchar(255) default NULL,

@@ -18,10 +18,10 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données : `myisam-big`
+-- Base de données : `myisam-medium`
 --
-CREATE DATABASE IF NOT EXISTS `myisam-big` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `myisam-big`;
+CREATE DATABASE IF NOT EXISTS `myisam-medium` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `myisam-medium`;
 
 -- --------------------------------------------------------
 

@@ -18,10 +18,10 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données : `innodb-big`
+-- Base de données : `innodb-medium`
 --
-CREATE DATABASE IF NOT EXISTS `innodb-big` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `innodb-big`;
+CREATE DATABASE IF NOT EXISTS `innodb-medium` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `innodb-medium`;
 
 -- --------------------------------------------------------
 

@@ -28,18 +28,18 @@ function executeQuery(\PDO $db,string $sql){
 
 function selectPkQuery(\PDO $db,int $max){
 	$id=\mt_rand(1, $max);
-	return query($db,"select * from user where id='$id'");
+	return query($db,"select * from user_ where id='$id'");
 }
 
 function selectNoPKQuery(\PDO $db){
-	return query($db,"select * from user where firstname='Allistair'");
+	return query($db,"select * from user_ where firstname='Allistair'");
 }
 
 function joinQuery(\PDO $db){
-	return query($db,"select category.* from user inner join category on user.idCategory=category.id where firstname='Allistair'");
+	return query($db,"select category.* from user_ inner join category on user_.idCategory=category.id where firstname='Allistair'");
 }
 
 function updateQuery(\PDO $db,int $max){
 	$id=\mt_rand(1, $max);
-	return executeQuery($db,"update user set lastname='aaa' where id='$id'");
+	return executeQuery($db,"update user_ set lastname='aaa' where id='$id'");
 }

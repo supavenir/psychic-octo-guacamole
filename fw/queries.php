@@ -7,7 +7,7 @@ const OPS=[OP_SELECT_PK,OP_SELECT_NO_PK,OP_JOIN,OP_UPDATE];
 
 function connect($dsn,$user,$password){
 	try {
-		$db = new \PDO('mysql:host=127.0.0.1;dbname=myisam-small', $user, $password);
+		$db = new \PDO('pgsql:host=127.0.0.1;dbname=pgsql-big', $user, $password);
 		$db->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
 
 	} catch (\PDOException $e) {

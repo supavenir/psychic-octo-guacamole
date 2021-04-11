@@ -36,7 +36,7 @@ function selectNoPKQuery(\PDO $db){
 }
 
 function joinQuery(\PDO $db){
-	return query($db,"select category.* from user_ inner join category_ on user_.idCategory=category_.id where firstname='Allistair'");
+	return query($db,"select category_.* from user_ inner join category_ on user_.idCategory=category_.id where firstname='Allistair'");
 }
 
 function updateQuery(\PDO $db,int $max){

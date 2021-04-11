@@ -1,4 +1,5 @@
 CREATE DATABASE "pgsqlbig" WITH TEMPLATE = template0 ENCODING 'UTF8';
+\c pgsqlbig
 BEGIN;
 
 CREATE TABLE "user_" (

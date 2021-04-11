@@ -2,12 +2,13 @@ benchmark ()
 {
     fw="$1"
     url="$2"
+    concurrency="$3"
     ab_log="output/$fw.ab.log"
     output="output/$fw.output"
 
     # get rpm
-    echo "ab -c 10 -t 3 $url"
-    ab -c 10 -t 3 "$url" > "$ab_log"
+    echo "ab -c $concurrency -t 3 $url"
+    ab -c $concurrency -t 3 "$url" > "$ab_log"
     rps=`grep "Requests per second:" "$ab_log" | cut -f 7 -d " "`
 
     # get time

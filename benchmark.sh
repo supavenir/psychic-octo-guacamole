@@ -14,6 +14,6 @@ fi
 
 cd benchmarks
 
-sh orm.sh "$base"
+sh orm.sh "$base" 10
 
 php ../bin/show_results_table.php

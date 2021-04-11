@@ -5,6 +5,7 @@ cd `dirname $0`
 
 base="$1"
 bm_name=`basename $0 .sh`
+concurrency="$2"
 
 results_file="output/results.$bm_name.log"
 check_file="output/check.$bm_name.log"
@@ -23,7 +24,7 @@ do
     if [ -d "fw/$fw" ]; then
         echo "$fw"
         . "fw/$fw/_benchmark/hello_world.sh"
-        benchmark "$fw" "$url"
+        benchmark "$fw" "$url" "$concurrency"
     fi
 done
 

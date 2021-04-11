@@ -7,7 +7,7 @@ const OPS=[OP_SELECT_PK,OP_SELECT_NO_PK,OP_JOIN,OP_UPDATE];
 
 function connect($dsn,$user,$password){
 	try {
-		$db = new \PDO($dsn, $user, $password);
+		$db = new \PDO('mysql:host=127.0.0.1;dbname=innodb-big', $user, $password);
 		$db->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
 
 	} catch (\PDOException $e) {
@@ -32,11 +32,11 @@ function selectPkQuery(\PDO $db,int $max){
 }
 
 function selectNoPKQuery(\PDO $db){
-	return query($db,"select * from user where firstname='Gretchen'");
+	return query($db,"select * from user where firstname='Allistair'");
 }
 
 function joinQuery(\PDO $db){
-	return query($db,"select category.* from user inner join category on user.idCategory=category.id where firstname='Gretchen'");
+	return query($db,"select category.* from user inner join category on user.idCategory=category.id where firstname='Allistair'");
 }
 
 function updateQuery(\PDO $db,int $max){

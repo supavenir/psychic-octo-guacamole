@@ -48,6 +48,7 @@ class Main extends ControllerBase{
 		$allResults=$this->getDatasArray(USession::getBoolean('reverse'));
 		$chartType='ColumnChart';
 		$tabs=$this->jquery->semantic()->htmlTab("tabs");
+		$reverse=USession::get('reverse');
 		foreach ($allResults as $title=>$result){
 			$context = JString::cleanIdentifier($title);
 			$dir=self::$outputDirectory."public/".$title;
@@ -64,6 +65,9 @@ class Main extends ControllerBase{
 			$kElements=\array_keys($elements);
 			$allElements=\array_merge($allElements, $kElements);
 			$content=$gui->createInternalMenu($context, $kElements);
+			if($reverse) {
+				$content .= $gui->displayIniFile($title, "spec-reverse-" . $context, $dir . DS . "$title.ini", "chart pie", "");
+			}
 			$content.=$gui->displayIniFile($title,"spec-".$context,$dir.DS."specifications.ini","database","info");
 			$content.=$gui->displayIniFile($title,"spec-config-".$context,$dir.DS."configuration.ini","settings","warning");
 			foreach ($elements as $element){

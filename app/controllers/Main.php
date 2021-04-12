@@ -21,8 +21,22 @@ class Main extends ControllerBase{
 	private static $outputDirectory=ROOT."./../output/";
 
 	private $fw;
-	private $tests;
-	
+
+	private function getAllTests(){
+		$dirs=glob(self::$outputDirectory."public/*");
+		$tests=[];
+		foreach ($dirs as $dir) {
+			if (\is_dir($dir)) {
+				$title = \basename($dir);
+				$file = $dir . DS . self::$resultFile;
+				if(file_exists($file)){
+					$tests[]=$title;
+				}
+			}
+		}
+		return $tests;
+	}
+
 	public function initialize(){
 		parent::initialize();
 		$this->gui=new GUI($this->jquery->semantic());
@@ -57,9 +71,6 @@ class Main extends ControllerBase{
 				$content.=$element["div"];
 			}
 			$title=$gui->replaceHtml($title);
-			$title=\str_replace('-small','<span class="ui mini olive circular label">S</span>',$title);
-			$title=\str_replace('-medium','<span class="ui mini yellow circular label">M</span>',$title);
-			$title=\str_replace('-large','<span class="ui mini orange circular label">L</span>',$title);
 			$content=$gui->replaceHtml($content);
 			$tab=$tabs->addTab($title, $content);
 		}
@@ -69,7 +80,7 @@ class Main extends ControllerBase{
 		
 		$gui->displayIniFile($title,"server-config",self::$outputDirectory."configuration.ini","");
 		$gui->frmFields($allElements);
-		$gui->frmDatas($this->fw,$this->tests);
+		$gui->frmDatas($this->fw,$this->getAllTests());
 		$this->jquery->execAtLast(BuildResults::loadGoogleChart($chartType));
 		$this->jquery->click(".select-fields","$('#div-fields').toggle();");
 		$this->jquery->click(".select-datas","$('#div-datas').toggle();");
@@ -90,7 +101,6 @@ class Main extends ControllerBase{
 				if ((!$filteredTests || \array_search($title,$tests)!==false) && \file_exists($file)) {
 					$result = BuildResults::parseResults($file);
 					$allResults[$title] = $result;
-					$this->tests[]=$title;
 				}
 			}
 		}

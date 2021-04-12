@@ -32,7 +32,8 @@ class GUI {
 		$menu->setActiveItem(0);
 		$bt=new HtmlButton("bt-display-fields-".$context,"Select fields...","select-fields");
 		$menu->addItem($bt);
-		$bt=new HtmlButton("bt-display-datas-".$context,"Select datas..."," black select-datas");
+		$bt=new HtmlButton("bt-display-datas-".$context,"Select data..."," black select-datas");
+		$bt->addIcon('database');
 		$menu->addItem($bt);
 		$menu->setSecondary();
 		return $menu;

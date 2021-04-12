@@ -96,11 +96,7 @@ class GUI {
 	}
 	
 	public function replaceHtml($content){
-		$content= \preg_replace("@\{icon\:(.*?)\}@", "<i class='ui $1 icon'></i>",$content);
-		$content=\str_replace('-small','<span class="ui mini olive circular label">S</span>',$content);
-		$content=\str_replace('-medium','<span class="ui mini yellow circular label">M</span>',$content);
-		$content=\str_replace('-large','<span class="ui mini orange circular label">L</span>',$content);
-		return $content;
+		return \preg_replace("@\{icon\:(.*?)\}@", "<i class='ui $1 icon'></i>",$content);
 	}
 	
 	public function frmFields($elements){

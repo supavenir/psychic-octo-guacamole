@@ -71,7 +71,7 @@ class GUI {
 			}
 			foreach ($iniContent as $section=>$elements){
 				$content.="<div class='header'>{$section}</div>";
-				$content.="<ul>";
+				$content.="<ul class='list'>";
 				foreach ($elements as $k=>$v){
 					$content.="<li><b>{$k}</b> : {$v}</li>";
 				}

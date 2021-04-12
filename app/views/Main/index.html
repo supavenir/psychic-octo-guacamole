@@ -15,7 +15,7 @@
 			<h1 class="ui inverted header">
 			  <div class="poiret content">
 			    DB benchmarks
-			    <div class="sub header">Database storages performances</div>
+			    <div class="sub header">Database storage performances</div>
 			  </div>
 			</h1>
 		</div>
@@ -23,6 +23,8 @@
 	<div class="ui container" id="main-content">
 		<div id="div-fields" style="display:none;">{{ q["frm-fields"] | raw }}</div>
 		<div id="div-fields-response"></div>
+		<div id="div-datas" style="display:none;">{{ q["frm-datas"] | raw }}</div>
+		<div id="div-datas-response"></div>
 		{{ q["tabs"] | raw }}
 		<h2 class="ui header" id="configuration"><i class="ui server icon"></i>Configuration for tests</h2>
 		{{ q["server-config"] | raw }}

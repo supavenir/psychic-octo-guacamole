@@ -61,23 +61,29 @@ class BuildResults {
 					'rows'   => $rows,
 			];
 		}
-		
+
 		foreach ($results as $fw => $data) {
-			if($min_rps!=0)
-				$results[$fw]['rps_relative']    = $data['rps'] / $min_rps;
-				if($min_memory!=0)
-					$results[$fw]['memory_relative'] = $data['memory'] / $min_memory;
-					if($min_time!=0)
-						$results[$fw]['time_relative'] = $data['time'] / $min_time;
-						if($min_file!=0)
-							$results[$fw]['file_relative'] = $data['file'] / $min_file;
-							if($min_queries!=0)
-								$results[$fw]['queries_relative'] = $data['queries'] / $min_queries;
-								if($min_rows!=0)
-									$results[$fw]['rows_relative'] = $data['rows'] / $min_rows;
+			if ($min_rps != 0) {
+				$results[$fw]['rps_relative'] = $data['rps'] / $min_rps;
+			}
+			if ($min_memory != 0) {
+				$results[$fw]['memory_relative'] = $data['memory'] / $min_memory;
+			}
+			if ($min_time != 0) {
+				$results[$fw]['time_relative'] = $data['time'] / $min_time;
+			}
+			if ($min_file != 0) {
+				$results[$fw]['file_relative'] = $data['file'] / $min_file;
+			}
+			if ($min_queries != 0) {
+				$results[$fw]['queries_relative'] = $data['queries'] / $min_queries;
+			}
+			if ($min_rows != 0) {
+				$results[$fw]['rows_relative'] = $data['rows'] / $min_rows;
+			}
 		}
 		
-		array_multisort(array_column($results, 'rps'), SORT_DESC, $results);
+		\array_multisort(\array_column($results, 'rps'), SORT_DESC, $results);
 		return $results;
 	}
 	

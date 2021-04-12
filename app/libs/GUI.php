@@ -6,6 +6,7 @@ use Ajax\Semantic;
 use Ubiquity\utils\base\UFileSystem;
 use controllers\Main;
 use Ajax\semantic\html\elements\HtmlButton;
+use Ubiquity\utils\http\USession;
 
 class GUI {
 	/**
@@ -25,11 +26,13 @@ class GUI {
 			$item=$menu->addItem($elm);
 			$item->asLink("#{$context}-{$elm}")->addToProperty("class","_field ".$elm);
 			if(!Main::displayField($elm)){
-				$item->addToProperty("style","display:none;");;
+				$item->addToProperty("style","display:none;");
 			}
 		}
 		$menu->setActiveItem(0);
 		$bt=new HtmlButton("bt-display-fields-".$context,"Select fields...","select-fields");
+		$menu->addItem($bt);
+		$bt=new HtmlButton("bt-display-datas-".$context,"Select datas..."," inverted select-datas");
 		$menu->addItem($bt);
 		$menu->setSecondary();
 		return $menu;
@@ -97,13 +100,24 @@ class GUI {
 	}
 	
 	public function frmFields($elements){
-		$items=array_combine($elements, $elements);
+		$items=\array_combine($elements, $elements);
 		$form=$this->semantic->htmlForm("frm-fields");
 		$fields=$form->addFields();
 		$dd=$fields->addDropdown("fields",$items,null,Main::getFieldsToDisplay(),true);
 		$dd->getField()->setDefaultText("Select fields to display...");
 		$bt=$fields->addButton("bt-validate-fields", "Valider");
 		$form->submitOnClick($bt, "Main/filterFields", "#div-fields-response",["hasLoader"=>"internal"]);
+	}
+
+	public function frmDatas($fw){
+		$items=\array_combine($fw, $fw);
+		$form=$this->semantic->htmlForm("frm-datas");
+		$fields=$form->addFields();
+		$dd=$fields->addDropdown("fws",$items,null,Main::getFwsToDisplay(),true);
+		$dd->getField()->setDefaultText("Select data to display...");
+		$ck=$fields->addCheckbox('ck-reverse','Reverse',USession::getBoolean('reverse'));
+		$bt=$fields->addButton("bt-validate-datas", "Valider");
+		$form->submitOnClick($bt, "Main/filterDatas", "body",["hasLoader"=>"internal"]);
 	}
 }
 

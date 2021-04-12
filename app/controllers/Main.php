@@ -73,8 +73,8 @@ class Main extends ControllerBase{
 		$this->jquery->execAtLast(BuildResults::loadGoogleChart($chartType));
 		$this->jquery->click(".select-fields","$('#div-fields').toggle();");
 		$this->jquery->click(".select-datas","$('#div-datas').toggle();");
-		$this->jquery->getHref("a[data-target]","",["ajaxTransition"=>"random"]);
-		$this->jquery->renderDefaultView(["urls"=>$urls]);
+		$this->jquery->getHref("a[data-target]","",["ajaxTransition"=>"scale"]);
+		$this->jquery->renderView('Main/index.html',["urls"=>$urls]);
 	}
 
 	public function getDatasArray(?bool $reverse=false):array{
@@ -118,9 +118,13 @@ class Main extends ControllerBase{
 	}
 	
 	public function filterFields(){
-		$fieldsToDisplay=\explode(",", $_POST["fields"]);
-		$fieldsToDisplay=UArray::iRemove($fieldsToDisplay, "");
-		USession::set("fields", $fieldsToDisplay);
+		$fieldsToDisplay=UArray::iRemove(\explode(",", $_POST["fields"]), "");
+		if(\count($fieldsToDisplay)>0) {
+			USession::set("fields", $fieldsToDisplay);
+		}else{
+			USession::delete('fields');
+			$fieldsToDisplay=['rps','time','memory','file','queries','rows'];
+		}
 		if(\count($fieldsToDisplay)===0){
 			$this->jquery->execAtLast('$("._field").show();');
 		}else{
@@ -133,9 +137,13 @@ class Main extends ControllerBase{
 	}
 
 	public function filterDatas(){
-		$fwsToDisplay=\explode(",", $_POST["fws"]);
-		$fwsToDisplay=UArray::iRemove($fwsToDisplay, "");
-		USession::set("fws", $fwsToDisplay);
+		$fwsToDisplay=UArray::iRemove(\explode(",", $_POST["fws"]), "");
+		if(\count($fwsToDisplay)>0) {
+			USession::set("fws", $fwsToDisplay);
+		}else{
+			USession::delete("fws");
+		}
+		USession::set('reverse',isset($_POST['ck-reverse']));
 		$this->index();
 	}
 	

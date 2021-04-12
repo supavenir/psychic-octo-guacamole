@@ -32,7 +32,7 @@ class GUI {
 		$menu->setActiveItem(0);
 		$bt=new HtmlButton("bt-display-fields-".$context,"Select fields...","select-fields");
 		$menu->addItem($bt);
-		$bt=new HtmlButton("bt-display-datas-".$context,"Select datas..."," inverted select-datas");
+		$bt=new HtmlButton("bt-display-datas-".$context,"Select datas..."," black select-datas");
 		$menu->addItem($bt);
 		$menu->setSecondary();
 		return $menu;
@@ -113,6 +113,7 @@ class GUI {
 		$items=\array_combine($fw, $fw);
 		$form=$this->semantic->htmlForm("frm-datas");
 		$fields=$form->addFields();
+		$fields->setInline();
 		$dd=$fields->addDropdown("fws",$items,null,Main::getFwsToDisplay(),true);
 		$dd->getField()->setDefaultText("Select data to display...");
 		$ck=$fields->addCheckbox('ck-reverse','Reverse',USession::getBoolean('reverse'));

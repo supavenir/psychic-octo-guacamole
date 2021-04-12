@@ -21,6 +21,7 @@ class Main extends ControllerBase{
 	private static $outputDirectory=ROOT."./../output/";
 
 	private $fw;
+	private $tests;
 	
 	public function initialize(){
 		parent::initialize();
@@ -33,7 +34,6 @@ class Main extends ControllerBase{
 		$allResults=$this->getDatasArray(USession::getBoolean('reverse'));
 		$chartType='ColumnChart';
 		$tabs=$this->jquery->semantic()->htmlTab("tabs");
-		$dirs=glob(self::$outputDirectory."public/*");
 		foreach ($allResults as $title=>$result){
 			$context = JString::cleanIdentifier($title);
 			$dir=self::$outputDirectory."public/".$title;
@@ -69,7 +69,7 @@ class Main extends ControllerBase{
 		
 		$gui->displayIniFile($title,"server-config",self::$outputDirectory."configuration.ini","");
 		$gui->frmFields($allElements);
-		$gui->frmDatas($this->fw);
+		$gui->frmDatas($this->fw,$this->tests);
 		$this->jquery->execAtLast(BuildResults::loadGoogleChart($chartType));
 		$this->jquery->click(".select-fields","$('#div-fields').toggle();");
 		$this->jquery->click(".select-datas","$('#div-datas').toggle();");
@@ -79,15 +79,18 @@ class Main extends ControllerBase{
 
 	public function getDatasArray(?bool $reverse=false):array{
 		$fws=USession::get("fws",[]);
+		$tests=USession::get('tests',[]);
+		$filteredTests=USession::exists('tests');
 		$dirs=glob(self::$outputDirectory."public/*");
 		$allResults=[];
 		foreach ($dirs as $dir) {
 			if (\is_dir($dir)) {
 				$title = \basename($dir);
 				$file = $dir . DS . self::$resultFile;
-				if (\file_exists($file)) {
+				if ((!$filteredTests || \array_search($title,$tests)!==false) && \file_exists($file)) {
 					$result = BuildResults::parseResults($file);
 					$allResults[$title] = $result;
+					$this->tests[]=$title;
 				}
 			}
 		}
@@ -138,10 +141,16 @@ class Main extends ControllerBase{
 
 	public function filterDatas(){
 		$fwsToDisplay=UArray::iRemove(\explode(",", $_POST["fws"]), "");
+		$testsToDisplay=UArray::iRemove(\explode(",", $_POST["tests"]), "");
 		if(\count($fwsToDisplay)>0) {
 			USession::set("fws", $fwsToDisplay);
 		}else{
 			USession::delete("fws");
+		}
+		if(\count($testsToDisplay)>0) {
+			USession::set("tests", $testsToDisplay);
+		}else{
+			USession::delete("tests");
 		}
 		USession::set('reverse',isset($_POST['ck-reverse']));
 		$this->index();
@@ -163,6 +172,11 @@ class Main extends ControllerBase{
 	public static function getFwsToDisplay(){
 		$fwsToDisplay=USession::get("fws",[]);
 		return \implode(",", $fwsToDisplay);
+	}
+
+	public static function getTestsToDisplay(){
+		$testsToDisplay=USession::get("tests",[]);
+		return \implode(",", $testsToDisplay);
 	}
 	
 	public function datas(){

@@ -109,14 +109,18 @@ class GUI {
 		$form->submitOnClick($bt, "Main/filterFields", "#div-fields-response",["hasLoader"=>"internal"]);
 	}
 
-	public function frmDatas($fw){
-		$items=\array_combine($fw, $fw);
+	public function frmDatas($fw,$tests){
+		$fwItems=\array_combine($fw, $fw);
+		$testItems=\array_combine($tests, $tests);
 		$form=$this->semantic->htmlForm("frm-datas");
 		$fields=$form->addFields();
 		$fields->setInline();
-		$dd=$fields->addDropdown("fws",$items,null,Main::getFwsToDisplay(),true);
+		$dd=$fields->addDropdown("fws",$fwItems,null,Main::getFwsToDisplay(),true);
 		$dd->getField()->setDefaultText("Select data to display...");
-		$ck=$fields->addCheckbox('ck-reverse','Reverse',USession::getBoolean('reverse'));
+		$dd=$fields->addDropdown("tests",$testItems,null,Main::getTestsToDisplay(),true);
+		$dd->getField()->setDefaultText("Select tests to display...");
+		$ck=$fields->addCheckbox('ck-reverse','Reverse');
+		$ck->setChecked(USession::getBoolean('reverse'));
 		$bt=$fields->addButton("bt-validate-datas", "Valider");
 		$form->submitOnClick($bt, "Main/filterDatas", "body",["hasLoader"=>"internal"]);
 	}

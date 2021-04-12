@@ -174,7 +174,7 @@ class Main extends ControllerBase{
 	}
 	
 	public static function displayField($elementId){
-		$fieldsToDisplay=USession::get("fields",[]);
+		$fieldsToDisplay=USession::get("fields",['rps','time']);
 		if(\count($fieldsToDisplay)===0){
 			return true;
 		}
@@ -182,7 +182,7 @@ class Main extends ControllerBase{
 	}
 	
 	public static function getFieldsToDisplay(){
-		$fieldsToDisplay=USession::get("fields",[]);
+		$fieldsToDisplay=USession::get("fields",['rps','time']);
 		return \implode(",", $fieldsToDisplay);
 	}
 

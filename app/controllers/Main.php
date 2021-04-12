@@ -66,7 +66,7 @@ class Main extends ControllerBase{
 			$allElements=\array_merge($allElements, $kElements);
 			$content=$gui->createInternalMenu($context, $kElements);
 			if($reverse) {
-				$content .= $gui->displayIniFile($title, "spec-reverse-" . $context, $dir . DS . "$title.ini", "chart pie", "");
+				$content .= $gui->displayIniFile($title, "spec-reverse-" . $context, $dir .".ini", "chart pie", "");
 			}
 			$content.=$gui->displayIniFile($title,"spec-".$context,$dir.DS."specifications.ini","database","info");
 			$content.=$gui->displayIniFile($title,"spec-config-".$context,$dir.DS."configuration.ini","settings","warning");

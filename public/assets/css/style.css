@@ -27,3 +27,6 @@ body {
 	font-family: 'Poiret One', cursive!important;
 	letter-spacing: 1px;
 }
+ul.list{
+    margin-bottom: 12px;
+}

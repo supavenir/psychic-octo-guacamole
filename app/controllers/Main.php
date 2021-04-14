@@ -64,7 +64,7 @@ class Main extends ControllerBase{
 	private function results($activeDir){
 		$gui=$this->gui;
 		$allElements=[];
-		$allResults=$this->getDatasArray(USession::getBoolean('reverse'));
+		$allResults=$this->getDatasArray($activeDir,USession::getBoolean('reverse'));
 		$chartType='ColumnChart';
 		$tabs=$this->jquery->semantic()->htmlTab("tabs");
 		$reverse=USession::get('reverse');
@@ -121,11 +121,11 @@ class Main extends ControllerBase{
 		return USession::get('activeDir',\current($this->directories));
 	}
 
-	public function getDatasArray(?bool $reverse=false):array{
+	public function getDatasArray($activeDir,?bool $reverse=false):array{
 		$fws=USession::get("fws",[]);
 		$tests=USession::get('tests',[]);
 		$filteredTests=USession::exists('tests');
-		$dirs=glob(self::$outputDirectory."public/*");
+		$dirs=glob(self::$outputDirectory.$activeDir."/*");
 		$allResults=[];
 		foreach ($dirs as $dir) {
 			if (\is_dir($dir)) {

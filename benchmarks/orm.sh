@@ -31,3 +31,7 @@ done
 
 cat "$error_file"
 
+suitename="$(basename $f .ini)"
+php ./bin/show_results_table.php "$bm_name"
+mkdir -p "output/$suitename/$sec" && cp "output/results.$bm_name.log" "output/$suitename/$sec/"
+

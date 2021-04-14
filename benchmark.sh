@@ -1,6 +1,6 @@
 base="https://db-benchmarks.sts-sio-caen.info/fw"
 
-declare -A sections
+declare -a sections
 props(){
 i=0
 while IFS='=' read -d $'\n' -r k v; do
@@ -8,7 +8,7 @@ while IFS='=' read -d $'\n' -r k v; do
     then
         section=${k#*[}
         section=${section%]*}
-        sections+=section
+        sections+=($section)
         array_name="properties_${section}"
         declare -g -A ${array_name}
     elif [[ $k ]]
@@ -28,12 +28,12 @@ cd benchmarks
 for f in ./../suites/*; do
   sections=()
   props $f
-  for sec in $sections
-  do
+  for s in "${!sections[@]}"; do
+    sec=${sections[$s]}
     echo "**********************************************************************************"
     echo "                         Start Benchmarks pour $sec                               "
     echo "**********************************************************************************"
-    export targets="$(eval echo $\{'!'properties_${sec}[@]\})"
+    export targets="$(eval echo $\{'!'properties_$sec[@]\})"
     sh orm.sh "$base" 10
     suitename="$(basename $f)"
     php ../bin/show_results_table.php

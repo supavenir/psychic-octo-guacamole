@@ -33,8 +33,7 @@ for f in ./../suites/*; do
     echo "**********************************************************************************"
     echo "                         Start Benchmarks pour $sec                               "
     echo "**********************************************************************************"
-    export targets="$(eval echo $\{'!'properties_$sec[@]\})"
-    sh orm.sh "$base" 10
+    source orm.sh "$base" 10
     suitename="$(basename $f)"
     php ../bin/show_results_table.php
     mkdir -p "output/$suitename/$sec" && cp output/results.orm.log "output/$suitename/$sec/"

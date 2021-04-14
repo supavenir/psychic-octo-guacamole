@@ -24,8 +24,7 @@ props(){
 
 
 
-for f in ./../suites/*; do
-  cd benchmarks
+for f in ./suites/*; do
   sections=()
   props $f
   for s in "${!sections[@]}"; do
@@ -33,6 +32,6 @@ for f in ./../suites/*; do
     echo "**********************************************************************************"
     echo "                         Start Benchmarks for $sec"
     echo "**********************************************************************************"
-    source orm.sh "$base" 10
+    source ./benchmarks/orm.sh "$base" 10
   done
 done

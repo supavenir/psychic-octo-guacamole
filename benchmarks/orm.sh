@@ -23,7 +23,7 @@ for fw in $(eval echo $\{'!'properties_$sec[@]\}); do
         echo "                                  $fw"
         echo "----------------------------------------------------------------------------------"
         . "fw/$fw/_benchmark/hello_world.sh"
-        params=$(eval echo $\{properties_$sec[$i]\})
+        params=$(eval echo $\{properties_$sec[$fw]\})
         url="${url}?${params}"
         benchmark "$fw" "$url" "$concurrency"
     fi

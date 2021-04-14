@@ -9,7 +9,9 @@ const OPS=[OP_SELECT_PK,OP_SELECT_NO_PK,OP_JOIN,OP_UPDATE,OP_LIKE,OP_COUNT];
 
 function connect($dsn,$user,$password){
 	try {
-		$db = new \PDO('pgsql:host=127.0.0.1;dbname=pgsqllarge', $user, $password,
+		$database=$_GET['db'];
+		$type=$_GET['type'];
+		$db = new \PDO("$type:host=127.0.0.1;dbname=$database", $user, $password,
 		[
 			\PDO::ATTR_PERSISTENT => true,
 			\PDO::ATTR_EMULATE_PREPARES => false

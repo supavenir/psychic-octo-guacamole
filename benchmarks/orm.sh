@@ -19,13 +19,15 @@ mv "$check_file" "$check_file.old"
 mv "$error_file" "$error_file.old"
 mv "$url_file" "$url_file.old"
 
-for fw in `echo $targets`
+for fw in `echo ${!targets[@]}`
 do
     if [ -d "fw/$fw" ]; then
         echo "$fw"
         . "fw/$fw/_benchmark/hello_world.sh"
+        url="${url}?${targets[$fw]}"
         benchmark "$fw" "$url" "$concurrency"
     fi
 done
 
 cat "$error_file"
+

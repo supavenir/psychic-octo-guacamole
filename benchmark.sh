@@ -33,9 +33,9 @@ for f in ./suites/*; do
     echo "                         Start Benchmarks for $sec"
     echo "**********************************************************************************"
     source ./benchmarks/orm.sh "$base" 10
-  done
     echo "**********************************************************************************"
     echo "                         End of Benchmarks for $sec, re-init"
     echo "**********************************************************************************"
-  bash ./warmdown.sh
+    bash ./warmdown.sh
+  done
 done

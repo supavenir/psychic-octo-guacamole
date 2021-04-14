@@ -30,7 +30,7 @@ cd benchmarks
 for f in ./../suites/*; do
   sections=()
   props $f
-  for sec in "$sections"
+  for sec in $sections
   do
     echo "**********************************************************************************"
     echo "                         Start Benchmarks pour $sec                               "

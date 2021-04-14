@@ -1,0 +1,10 @@
+<div id="div-fields" style="display:none;">{{ q["frm-fields"] | raw }}</div>
+<div id="div-fields-response"></div>
+<div id="div-datas" style="display:none;">{{ q["frm-datas"] | raw }}</div>
+<div id="div-datas-response"></div>
+<div id="tabs-div">
+    {{ q["tabs"] | raw }}
+</div>
+{%  if internal %}
+    {{ script_foot | raw }}
+{% endif %}

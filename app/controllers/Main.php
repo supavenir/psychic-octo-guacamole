@@ -3,6 +3,7 @@ namespace controllers;
 use libs\BuildResults;
 use Ajax\service\JString;
 use libs\GUI;
+use Ubiquity\utils\http\URequest;
 use Ubiquity\utils\http\USession;
 use Ubiquity\utils\base\UArray;
 
@@ -22,6 +23,8 @@ class Main extends ControllerBase{
 
 	private $fw;
 
+	private $directories;
+
 	private function getAllTests(){
 		$dirs=glob(self::$outputDirectory."public/*");
 		$tests=[];
@@ -40,9 +43,25 @@ class Main extends ControllerBase{
 	public function initialize(){
 		parent::initialize();
 		$this->gui=new GUI($this->jquery->semantic());
+		if(!URequest::isAjax()){
+			$this->jquery->getHref("a[data-target]","",["ajaxTransition"=>"scale",'listenerOn'=>'body']);
+			$this->jquery->click(".select-datas","$('#div-datas').toggle();",listenerOn: 'body');
+			$this->jquery->click(".select-fields","$('#div-fields').toggle();",listenerOn: 'body');
+		}
 	}
 
 	public function index(){
+		$gui=$this->gui;
+		$activeDir=$this->getActiveDir();
+		$gui->getDirectoriesMenu($this->directories,$activeDir);
+		$this->results($activeDir);
+
+		$gui->displayIniFile($title,"server-config",self::$outputDirectory."configuration.ini","");
+		$gui->getUrls(self::$outputDirectory."urls.log");
+		$this->jquery->renderView('Main/index.html');
+	}
+
+	private function results($activeDir){
 		$gui=$this->gui;
 		$allElements=[];
 		$allResults=$this->getDatasArray(USession::getBoolean('reverse'));
@@ -51,7 +70,7 @@ class Main extends ControllerBase{
 		$reverse=USession::get('reverse');
 		foreach ($allResults as $title=>$result){
 			$context = JString::cleanIdentifier($title);
-			$dir=self::$outputDirectory."public/".$title;
+			$dir=self::$outputDirectory.$activeDir.\DS.$title;
 
 			$elements=BuildResults::makeAllGraphs(function($id) use ($result){
 				$data = array();
@@ -81,18 +100,25 @@ class Main extends ControllerBase{
 			$content=$gui->replaceHtml($content);
 			$tab=$tabs->addTab($title, $content);
 		}
-		if(($urls=$gui->getUrls(self::$outputDirectory."urls.log"))!==false){
-			$urls="<div class='ui segment'>".$urls."</div>";
-		}
-		
-		$gui->displayIniFile($title,"server-config",self::$outputDirectory."configuration.ini","");
+		$this->jquery->execAtLast(BuildResults::loadGoogleChart($chartType));
+
 		$gui->frmFields($allElements);
 		$gui->frmDatas($this->fw,$this->getAllTests());
-		$this->jquery->execAtLast(BuildResults::loadGoogleChart($chartType));
-		$this->jquery->click(".select-fields","$('#div-fields').toggle();");
-		$this->jquery->click(".select-datas","$('#div-datas').toggle();");
-		$this->jquery->getHref("a[data-target]","",["ajaxTransition"=>"scale"]);
-		$this->jquery->renderView('Main/index.html',["urls"=>$urls]);
+	}
+
+	public function displayResults($dir){
+		USession::set('activeDir',$dir);
+		$this->results($dir);
+		$this->jquery->renderView('Main/displayResults.html',['internal'=>true]);
+	}
+
+	public function getFolders(){
+		$this->directories=\array_map('basename',\glob(self::$outputDirectory."/*",\GLOB_ONLYDIR));
+	}
+
+	public function getActiveDir(){
+		$this->getFolders();
+		return USession::get('activeDir',\current($this->directories));
 	}
 
 	public function getDatasArray(?bool $reverse=false):array{

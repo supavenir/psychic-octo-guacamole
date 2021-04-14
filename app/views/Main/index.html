@@ -21,15 +21,14 @@
 		</div>
 	</div>
 	<div class="ui container" id="main-content">
-		<div id="div-fields" style="display:none;">{{ q["frm-fields"] | raw }}</div>
-		<div id="div-fields-response"></div>
-		<div id="div-datas" style="display:none;">{{ q["frm-datas"] | raw }}</div>
-		<div id="div-datas-response"></div>
-		{{ q["tabs"] | raw }}
+		{{ q['menu-directories'] | raw }}
+		<div id="div-display-results">
+			{% include '@activeTheme/Main/displayResults.html' %}
+		</div>
 		<h2 class="ui header" id="configuration"><i class="ui server icon"></i>Configuration for tests</h2>
 		{{ q["server-config"] | raw }}
 		<h2 class="ui header" id="urls"><i class="ui linkify icon"></i>Try it!</h2>
-		{{ urls | raw }}
+		{{ q['urls-segment'] | raw }}
 	</div>
 </div>
 <footer>

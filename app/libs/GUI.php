@@ -3,6 +3,8 @@
 namespace libs;
 
 use Ajax\Semantic;
+use Ajax\semantic\html\elements\HtmlHeader;
+use Ajax\semantic\html\elements\HtmlList;
 use Ubiquity\utils\base\UFileSystem;
 use controllers\Main;
 use Ajax\semantic\html\elements\HtmlButton;
@@ -38,11 +40,22 @@ class GUI {
 		$menu->setSecondary();
 		return $menu;
 	}
+
+	public function getDirectoriesMenu($directories,$active){
+		$menu=$this->semantic->htmlMenu('menu-directories',$directories);
+		$menu->setActiveItem(\array_search($active,$directories));
+		$menu->setSecondary();
+		foreach ($directories as $index=>$dir){
+			$item=$menu->getItem($index);
+			$item->asLink('Main/displayResults/'.$dir);
+			$item->setProperty('data-target','#div-display-results');
+		}
+	}
 	
 	public function getUrls($url_file){
-		if(file_exists($url_file)){
-			$header=$this->semantic->htmlHeader("url-header","3","You can test yourself the urls below:");
-			$list=$this->semantic->htmlList("list-urls");
+		if(\file_exists($url_file)){
+			$header=new HtmlHeader("url-header","3","You can test yourself the urls below:");
+			$list=new HtmlList("list-urls");
 			$urls = file($url_file);
 			foreach ($urls as $url) {
 				$parts = parse_url(trim($url));
@@ -50,11 +63,11 @@ class GUI {
 				if (isset($parts['query'])) {
 					$url .= '?' . $parts['query'];
 				}
-				$url=htmlspecialchars($url, ENT_QUOTES, 'UTF-8');
+				$url=\htmlspecialchars($url, ENT_QUOTES, 'UTF-8');
 				$item=$list->addItem($url);
 				$item->asLink($url,"_new");
 			}
-			return $header.$list;
+			return $this->semantic->htmlSegment('urls-segment',$header.$list);
 		}
 		return false;
 	}

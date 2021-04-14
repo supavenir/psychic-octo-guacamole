@@ -1,5 +1,3 @@
-#!/bin/sh
-
 base="https://db-benchmarks.sts-sio-caen.info/fw"
 
 declare -A sections

@@ -2,7 +2,7 @@ cd `dirname $0`
 . ./benchmarks/_functions.sh
 
 base="$1"
-bm_name=`basename $0 .sh`
+bm_name="orm"
 concurrency="$2"
 
 results_file="output/results.$bm_name.log"
@@ -10,10 +10,10 @@ check_file="output/check.$bm_name.log"
 error_file="output/error.$bm_name.log"
 url_file="output/urls.log"
 
-mv "$results_file" "$results_file.old"
-mv "$check_file" "$check_file.old"
-mv "$error_file" "$error_file.old"
-mv "$url_file" "$url_file.old"
+mv "$results_file" "$results_file.old" 2>/dev/null; true
+mv "$check_file" "$check_file.old" 2>/dev/null; true
+mv "$error_file" "$error_file.old" 2>/dev/null; true
+mv "$url_file" "$url_file.old" 2>/dev/null; true
 
 for fw in $(eval echo $\{'!'properties_$sec[@]\}); do
     if [ -d "fw/$fw" ]; then

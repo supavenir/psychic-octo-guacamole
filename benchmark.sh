@@ -1,4 +1,4 @@
-base="https://db-benchmarks.sts-sio-caen.info/fw"
+base="http://172.17.15.4/fw"
 
 declare -a sections
 props(){

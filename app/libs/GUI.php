@@ -114,29 +114,33 @@ class GUI {
 	}
 	
 	public function frmFields($elements){
-		$items=\array_combine($elements, $elements);
-		$form=$this->semantic->htmlForm("frm-fields");
-		$fields=$form->addFields();
-		$dd=$fields->addDropdown("fields",$items,null,Main::getFieldsToDisplay(),true);
-		$dd->getField()->setDefaultText("Select fields to display...");
-		$bt=$fields->addButton("bt-validate-fields", "Valider");
-		$form->submitOnClick($bt, "Main/filterFields", "#div-fields-response",["hasLoader"=>"internal"]);
+		if(\is_array($elements)) {
+			$items = \array_combine($elements, $elements);
+			$form = $this->semantic->htmlForm("frm-fields");
+			$fields = $form->addFields();
+			$dd = $fields->addDropdown("fields", $items, null, Main::getFieldsToDisplay(), true);
+			$dd->getField()->setDefaultText("Select fields to display...");
+			$bt = $fields->addButton("bt-validate-fields", "Valider");
+			$form->submitOnClick($bt, "Main/filterFields", "#div-fields-response", ["hasLoader" => "internal"]);
+		}
 	}
 
-	public function frmDatas($fw,$tests){
-		$fwItems=\array_combine($fw, $fw);
-		$testItems=\array_combine($tests, $tests);
-		$form=$this->semantic->htmlForm("frm-datas");
-		$fields=$form->addFields();
-		$fields->setInline();
-		$dd=$fields->addDropdown("fws",$fwItems,null,Main::getFwsToDisplay(),true);
-		$dd->getField()->setDefaultText("Select data to display...");
-		$dd=$fields->addDropdown("tests",$testItems,null,Main::getTestsToDisplay(),true);
-		$dd->getField()->setDefaultText("Select tests to display...");
-		$ck=$fields->addCheckbox('ck-reverse','Reverse');
-		$ck->setChecked(USession::getBoolean('reverse'));
-		$bt=$fields->addButton("bt-validate-datas", "Valider");
-		$form->submitOnClick($bt, "Main/filterDatas", "body",["hasLoader"=>"internal"]);
+	public function frmDatas($fw,$tests,$activeDir){
+		if(\is_array($fw)) {
+			$fwItems = \array_combine($fw, $fw);
+			$testItems = \array_combine($tests, $tests);
+			$form = $this->semantic->htmlForm("frm-datas");
+			$fields = $form->addFields();
+			$fields->setInline();
+			$dd = $fields->addDropdown("fws", $fwItems, null, Main::getFwsToDisplay($activeDir), true);
+			$dd->getField()->setDefaultText("Select data to display...");
+			$dd = $fields->addDropdown("tests", $testItems, null, Main::getTestsToDisplay($activeDir), true);
+			$dd->getField()->setDefaultText("Select tests to display...");
+			$ck = $fields->addCheckbox('ck-reverse', 'Reverse');
+			$ck->setChecked(USession::getBoolean('reverse-'.$activeDir));
+			$bt = $fields->addButton("bt-validate-datas", "Valider");
+			$form->submitOnClick($bt, "Main/filterDatas", "body", ["hasLoader" => "internal"]);
+		}
 	}
 }
 

@@ -25,14 +25,14 @@ class Main extends ControllerBase{
 
 	private $directories;
 
-	private function getAllTests(){
-		$dirs=glob(self::$outputDirectory."public/*");
+	private function getAllTests($activeDir){
+		$dirs=glob(self::$outputDirectory.$activeDir."/*");
 		$tests=[];
 		foreach ($dirs as $dir) {
 			if (\is_dir($dir)) {
 				$title = \basename($dir);
 				$file = $dir . DS . self::$resultFile;
-				if(file_exists($file)){
+				if(\file_exists($file)){
 					$tests[]=$title;
 				}
 			}
@@ -64,10 +64,10 @@ class Main extends ControllerBase{
 	private function results($activeDir){
 		$gui=$this->gui;
 		$allElements=[];
-		$allResults=$this->getDatasArray($activeDir,USession::getBoolean('reverse'));
+		$allResults=$this->getDatasArray($activeDir,USession::getBoolean('reverse-'.$activeDir));
 		$chartType='ColumnChart';
 		$tabs=$this->jquery->semantic()->htmlTab("tabs");
-		$reverse=USession::get('reverse');
+		$reverse=USession::get('reverse-'.$activeDir);
 		foreach ($allResults as $title=>$result){
 			$context = JString::cleanIdentifier($title);
 			$dir=self::$outputDirectory.$activeDir.\DS.$title;
@@ -103,7 +103,7 @@ class Main extends ControllerBase{
 		$this->jquery->execAtLast(BuildResults::loadGoogleChart($chartType));
 
 		$gui->frmFields($allElements);
-		$gui->frmDatas($this->fw,$this->getAllTests());
+		$gui->frmDatas($this->fw,$this->getAllTests($activeDir),$activeDir);
 	}
 
 	public function displayResults($dir){
@@ -122,9 +122,9 @@ class Main extends ControllerBase{
 	}
 
 	public function getDatasArray($activeDir,?bool $reverse=false):array{
-		$fws=USession::get("fws",[]);
-		$tests=USession::get('tests',[]);
-		$filteredTests=USession::exists('tests');
+		$fws=USession::get("fws-".$activeDir,[]);
+		$tests=USession::get('tests-'.$activeDir,[]);
+		$filteredTests=USession::exists('tests-'.$activeDir);
 		$dirs=glob(self::$outputDirectory.$activeDir."/*");
 		$allResults=[];
 		foreach ($dirs as $dir) {
@@ -141,7 +141,7 @@ class Main extends ControllerBase{
 			$this->fw=\array_keys(\current($allResults));
 		}
 		if($reverse){
-			$filtered=USession::exists('fws');
+			$filtered=USession::exists('fws-'.$activeDir);
 			$allResultsReverse=[];
 			foreach ($allResults as $key=>$result){
 				foreach ($result as $fw=>$fwResult){
@@ -152,7 +152,7 @@ class Main extends ControllerBase{
 			}
 			return $allResultsReverse;
 		}
-		if(USession::exists('fws')){
+		if(USession::exists('fws-'.$activeDir)){
 			$toRemoveFws=\array_diff($this->fw,$fws);
 			foreach ($allResults as $title=>$result){
 				foreach ($toRemoveFws as $toRemoveFw){
@@ -183,19 +183,20 @@ class Main extends ControllerBase{
 	}
 
 	public function filterDatas(){
+		$activeDir=$this->getActiveDir();
 		$fwsToDisplay=UArray::iRemove(\explode(",", $_POST["fws"]), "");
 		$testsToDisplay=UArray::iRemove(\explode(",", $_POST["tests"]), "");
 		if(\count($fwsToDisplay)>0) {
-			USession::set("fws", $fwsToDisplay);
+			USession::set("fws-".$activeDir, $fwsToDisplay);
 		}else{
-			USession::delete("fws");
+			USession::delete("fws-".$activeDir);
 		}
 		if(\count($testsToDisplay)>0) {
-			USession::set("tests", $testsToDisplay);
+			USession::set("tests-".$activeDir, $testsToDisplay);
 		}else{
-			USession::delete("tests");
+			USession::delete("tests-".$activeDir);
 		}
-		USession::set('reverse',isset($_POST['ck-reverse']));
+		USession::set('reverse-'.$activeDir,isset($_POST['ck-reverse']));
 		$this->index();
 	}
 	
@@ -212,13 +213,13 @@ class Main extends ControllerBase{
 		return \implode(",", $fieldsToDisplay);
 	}
 
-	public static function getFwsToDisplay(){
-		$fwsToDisplay=USession::get("fws",[]);
+	public static function getFwsToDisplay($activeDir){
+		$fwsToDisplay=USession::get("fws-".$activeDir,[]);
 		return \implode(",", $fwsToDisplay);
 	}
 
-	public static function getTestsToDisplay(){
-		$testsToDisplay=USession::get("tests",[]);
+	public static function getTestsToDisplay($activeDir){
+		$testsToDisplay=USession::get("tests-".$activeDir,[]);
 		return \implode(",", $testsToDisplay);
 	}
 	

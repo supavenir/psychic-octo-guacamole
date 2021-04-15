@@ -108,6 +108,10 @@ class Main extends ControllerBase{
 
 	public function displayResults($dir){
 		USession::set('activeDir',$dir);
+		if(!URequest::isAjax()){
+			$this->index();
+			return ;
+		}
 		$this->results($dir);
 		$this->jquery->renderView('Main/displayResults.html',['internal'=>true]);
 	}

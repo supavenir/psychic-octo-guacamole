@@ -7,7 +7,7 @@ const OP_LIKE='updateQuery';
 const OP_COUNT='updateQuery';
 const OPS=[OP_SELECT_PK,OP_SELECT_NO_PK,OP_JOIN,OP_UPDATE,OP_LIKE,OP_COUNT];
 
-function connect($dsn,$user,$password){
+function connect($user,$password){
 	try {
 		$database=$_GET['db'];
 		$type=$_GET['type'];

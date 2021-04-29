@@ -5,7 +5,8 @@ const OP_JOIN='joinQuery';
 const OP_UPDATE='updateQuery';
 const OP_LIKE='updateQuery';
 const OP_COUNT='updateQuery';
-const OPS=[OP_SELECT_PK,OP_SELECT_NO_PK,OP_JOIN,OP_UPDATE,OP_LIKE,OP_COUNT];
+const OP_AVG_SEXE='avgSexe';
+const OPS=[OP_SELECT_PK,OP_SELECT_NO_PK,OP_JOIN,OP_UPDATE,OP_LIKE,OP_COUNT,OP_AVG_SEXE];
 
 function connect($user,$password){
 	try {
@@ -72,4 +73,10 @@ function countQuery(\PDO $db){
 	$st=prepare($db,'select count(*) from user_');
 	$st->execute();
 	return $st->fetchAll();
+}
+
+function avgSexe(\PDO $db){
+	$st=prepare($db,'SELECT AVG(age) FROM user_ WHERE sexe=0;');
+	$st->execute();
+	return $st->fetch();
 }

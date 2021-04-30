@@ -39,12 +39,12 @@ testSuite(){
     done
 }
 
-if [ -n "$1"];then
-  if [[ -f "$1" ]]; then
-      testSuite $1
-  fi
-else
+if [[ $# -eq 0 ]] ; then
   for f in ./suites/*; do
     testSuite $f
   done
+else
+  if [[ -f "$1" ]]; then
+      testSuite $1
+  fi
 fi

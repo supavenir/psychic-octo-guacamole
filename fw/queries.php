@@ -83,7 +83,7 @@ function avgSexe(\PDO $db){
 }
 
 function joinSexe(\PDO $db){
-	$st=prepare($db,'SELECT u.* FROM user_ u INNER JOIN category_ c on u.idCategory=c.id where u.sexe=0;');
+	$st=prepare($db,'SELECT * FROM user_ INNER JOIN category_ on idCategory=category_.id where sexe=1;');
 	$st->execute();
 	return $st->fetchAll();
 }

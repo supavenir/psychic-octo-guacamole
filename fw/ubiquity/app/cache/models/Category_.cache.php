@@ -1,0 +1,2 @@
+<?php
+return array("#tableName"=>"category_","#primaryKeys"=>["id"=>"id"],"#manyToOne"=>[],"#fieldNames"=>["id"=>"id","name"=>"name","user_s"=>"user_s"],"#memberNames"=>["id"=>"id","name"=>"name","user_s"=>"user_s"],"#fieldTypes"=>["id"=>"mediumint(8) unsigned","name"=>"varchar(255)","user_s"=>"mixed"],"#nullable"=>["id","name"],"#notSerializable"=>["user_s"],"#transformers"=>[],"#accessors"=>["id"=>"setId","name"=>"setName","user_s"=>"setUser_s"],"#oneToMany"=>["user_s"=>["mappedBy"=>"category_","className"=>"models\\User_"]]);

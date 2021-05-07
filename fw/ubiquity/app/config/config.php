@@ -6,8 +6,8 @@ return array(
 				"dbName"=>"innodb-big",
 				"serverName"=>"127.0.0.1",
 				"port"=>"3306",
-				"user"=>"root",
-				"password"=>"",
+				"user"=>"sio2a",
+				"password"=>"sio2a",
 				"options"=>[],
 				"cache"=>false
 		],

@@ -3,7 +3,7 @@ return array(
 		"siteUrl"=>"http://127.0.0.1/ubiquity/",
 		"database"=>[
 				"type"=>"mysql",
-				"dbName"=>"innodb-big",
+				"dbName"=>"innodb-large",
 				"serverName"=>"127.0.0.1",
 				"port"=>"3306",
 				"user"=>"sio2a",

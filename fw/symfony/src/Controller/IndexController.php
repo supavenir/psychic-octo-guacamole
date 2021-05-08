@@ -14,6 +14,6 @@ class IndexController extends AbstractController
     {
 		$repository = $this->getDoctrine()->getRepository(User::class);
 		$users = $repository->findAll();
-        return new Response(\count($users));
+        return new Response($users[0]->getIdcategory());
     }
 }

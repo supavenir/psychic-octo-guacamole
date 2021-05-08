@@ -1,5 +1,12 @@
 # see https://symfony.com/doc/current/reference/configuration/framework.html
 framework:
+    cache:
+        pools:
+            doctrine.result_cache_pool:
+                adapter: cache.app
+                default_lifetime: 25200 # 1 week
+            doctrine.system_cache_pool:
+                adapter: cache.system
     secret: '%env(APP_SECRET)%'
     #csrf_protection: true
     #http_method_override: true
@@ -15,3 +22,4 @@ framework:
     #fragments: true
     php_errors:
         log: true
+

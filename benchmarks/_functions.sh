@@ -29,11 +29,11 @@ benchmark ()
     file=`tail -1 "$output" | cut -f 3 -d ':'`
 
 	#get dbQueries
-	dbCounts=`php ./benchmarks/db_queries.php clear`
+	dbCounts=`php ./benchmarks/db_queries.php $url clear`
 	queries_before=`echo "$dbCounts" | cut -f 1 -d ':'`
 	rows_before=`echo "$dbCounts" | cut -f 2 -d ':'`
 	curl "$url"
-	dbCounts=`php ./benchmarks/db_queries.php`
+	dbCounts=`php ./benchmarks/db_queries.php $url`
 	queries_after=`echo "$dbCounts" | cut -f 1 -d ':'`
 	rows_after=`echo "$dbCounts" | cut -f 2 -d ':'`
 	

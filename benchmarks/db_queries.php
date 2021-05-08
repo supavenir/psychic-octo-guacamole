@@ -1,12 +1,12 @@
 <?php
-if(isset($_GET['queries'])) {
+if(\strpos(@$argv[1],'queries')!==-1) {
 	$dsn = 'mysql:dbname=innodb-large;host=127.0.0.1';
 	$user = 'sio2a';
 	$password = 'sio2a';
 
 	try {
 		$db = new \PDO($dsn, $user, $password);
-		$clear = @$argv[1];
+		$clear = @$argv[2];
 		$st = $db->query("Show session status like 'Queries';");
 		$q = $st->fetchColumn(1);
 		$st->closeCursor();

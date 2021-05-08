@@ -10,7 +10,7 @@ class MainController extends Controller
     public function index(){
         $users=User::with(['category'])->get();
         foreach ($users as $user) {
-            echo $users->category->name;
+            echo $user->category->name;
         }
     }
 }

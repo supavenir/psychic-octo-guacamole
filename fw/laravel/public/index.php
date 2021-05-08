@@ -53,3 +53,5 @@ $response = tap($kernel->handle(
 ))->send();
 
 $kernel->terminate($request, $response);
+require $_SERVER['DOCUMENT_ROOT'].'/libs/output_data.php';
+

@@ -1,5 +1,5 @@
 <?php
-if(\strpos(@$argv[1],'queries')!==-1) {
+if(isset($argv[1]) && \strpos($argv[1],'queries')!==-1) {
 	$dsn = 'mysql:dbname=innodb-large;host=127.0.0.1';
 	$user = 'sio2a';
 	$password = 'sio2a';

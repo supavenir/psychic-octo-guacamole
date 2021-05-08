@@ -9,6 +9,6 @@ class MainController extends Controller
 {
     public function index(){
         $users=User::with(['category'])->get();
-        var_dump($users[0]->category);
+        var_dump($users[0]->category->name);
     }
 }

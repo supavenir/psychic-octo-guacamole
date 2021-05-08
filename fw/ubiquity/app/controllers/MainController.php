@@ -12,7 +12,7 @@ class MainController extends Controller {
 	public function __construct() {}
 	public function index(){
 		$users=DAO::getAll(User_::class,'',['category_']);
-		var_dump($users[0]->getCategory_());
+		var_dump(\current($users)->getCategory_()->getName());
 	}
 
 }

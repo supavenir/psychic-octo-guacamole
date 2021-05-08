@@ -1,1 +1,1 @@
-url="$base/$fw/index.php?c=MainController"
+url="$base/$fw/index.php?c=MainController&"

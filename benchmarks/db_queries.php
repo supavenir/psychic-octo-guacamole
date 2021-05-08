@@ -15,7 +15,7 @@ if(isset($argv[1]) && \strpos($argv[1],'queries')!==-1) {
 		echo $q . ':' . $r;
 		$st->closeCursor();
 		if (isset($clear)) {
-			$db->exec("RESET QUERY CACHE;");
+			//$db->exec("RESET QUERY CACHE;");
 		}
 	} catch (\PDOException $e) {
 		echo $e->getMessage();
